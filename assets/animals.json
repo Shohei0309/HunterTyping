@@ -1,0 +1,252 @@
+[
+  {
+    "id": "ari",
+    "name": "アリ",
+    "kana": "あり",
+    "cat": "昆虫",
+    "food": "小さな虫、甘いもの、植物の種など",
+    "env": "校庭・草むら・土の中",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "batta",
+    "name": "ショウリョウバッタ",
+    "kana": "しょうりょうばった",
+    "cat": "昆虫",
+    "food": "草の葉",
+    "env": "草むら・校庭",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "semi",
+    "name": "セミ",
+    "kana": "せみ",
+    "cat": "昆虫",
+    "food": "木のしる",
+    "env": "木のある場所",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "hachi",
+    "name": "ハチ",
+    "kana": "はち",
+    "cat": "昆虫",
+    "food": "花のみつ、花粉、小さな虫など",
+    "env": "花の近く・草むら",
+    "poison": true,
+    "level": "初級"
+  },
+  {
+    "id": "ga",
+    "name": "ガ",
+    "kana": "が",
+    "cat": "昆虫",
+    "food": "花のみつなど",
+    "env": "草むら・明かりの近く",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "chou",
+    "name": "モンシロチョウ",
+    "kana": "もんしろちょう",
+    "cat": "昆虫",
+    "food": "花のみつ",
+    "env": "花だん・畑・草むら",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kamakiri",
+    "name": "カマキリ",
+    "kana": "かまきり",
+    "cat": "昆虫",
+    "food": "小さな虫",
+    "env": "草むら・花だん",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "amenbo",
+    "name": "アメンボ",
+    "kana": "あめんぼ",
+    "cat": "昆虫",
+    "food": "水面に落ちた小さな虫",
+    "env": "池・川の水面",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "medaka",
+    "name": "メダカ",
+    "kana": "めだか",
+    "cat": "魚類",
+    "food": "小さな水中の生き物、藻など",
+    "env": "池・田んぼ・ゆるやかな川",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "koi",
+    "name": "マゴイ",
+    "kana": "こい",
+    "cat": "魚類",
+    "food": "水草、小さな生き物、えさなど",
+    "env": "池・川",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "namazu",
+    "name": "ナマズ",
+    "kana": "なまず",
+    "cat": "魚類",
+    "food": "小魚、水生昆虫など",
+    "env": "川・池の底の方",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "dojou",
+    "name": "ドジョウ",
+    "kana": "どじょう",
+    "cat": "魚類",
+    "food": "泥の中の小さな生き物など",
+    "env": "田んぼ・川・用水路",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kaeru",
+    "name": "カエル",
+    "kana": "かえる",
+    "cat": "両生類",
+    "food": "小さな虫",
+    "env": "田んぼ・池・草むら",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "imori",
+    "name": "アカハライモリ",
+    "kana": "いもり",
+    "cat": "両生類",
+    "food": "小さな水中の生き物",
+    "env": "池・田んぼ・水辺",
+    "poison": true,
+    "level": "初級"
+  },
+  {
+    "id": "tokage",
+    "name": "ニホントカゲ",
+    "kana": "とかげ",
+    "cat": "爬虫類",
+    "food": "小さな虫など",
+    "env": "石の近く・草むら・日なた",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "yamori",
+    "name": "ニホンヤモリ",
+    "kana": "やもり",
+    "cat": "爬虫類",
+    "food": "小さな虫",
+    "env": "家の壁・すき間・夜の明かりの近く",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kusagame",
+    "name": "クサガメ",
+    "kana": "くさがめ",
+    "cat": "爬虫類",
+    "food": "水草、小魚、小さな生き物など",
+    "env": "池・川・水辺",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kumo",
+    "name": "クモ",
+    "kana": "くも",
+    "cat": "その他",
+    "food": "小さな虫",
+    "env": "草むら・木・家のまわり",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "mimizu",
+    "name": "ミミズ",
+    "kana": "みみず",
+    "cat": "その他",
+    "food": "落ち葉や土の中の有機物",
+    "env": "土の中・しめった場所",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kani",
+    "name": "カニ",
+    "kana": "かに",
+    "cat": "その他",
+    "food": "小さな生き物、落ち葉など",
+    "env": "水辺・川・海辺",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "ebi",
+    "name": "ヌマエビ",
+    "kana": "えび",
+    "cat": "その他",
+    "food": "藻、小さな有機物など",
+    "env": "池・川・水草の近く",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "namekuji",
+    "name": "ナメクジ",
+    "kana": "なめくじ",
+    "cat": "その他",
+    "food": "やわらかい植物、落ち葉など",
+    "env": "しめった場所・草むら",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "dangomushi",
+    "name": "ダンゴムシ",
+    "kana": "だんごむし",
+    "cat": "その他",
+    "food": "落ち葉、くさった植物など",
+    "env": "石の下・落ち葉の下・しめった場所",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "kawanina",
+    "name": "カワニナ",
+    "kana": "かわにな",
+    "cat": "その他",
+    "food": "藻、石についた小さなもの",
+    "env": "きれいな川・石のある水辺",
+    "poison": false,
+    "level": "初級"
+  },
+  {
+    "id": "sawagani",
+    "name": "サワガニ",
+    "kana": "さわがに",
+    "cat": "その他",
+    "food": "小さな生き物、落ち葉など",
+    "env": "きれいな沢・水辺",
+    "poison": false,
+    "level": "初級"
+  }
+]
