@@ -248,5 +248,305 @@
     "env": "きれいな沢・水辺",
     "poison": false,
     "level": "初級"
+  },
+  {
+    "id": "agehachou",
+    "name": "アゲハチョウ",
+    "kana": "あげはちょう",
+    "cat": "昆虫",
+    "food": "花のみつ",
+    "env": "花だん・校庭",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "asahinakawatonbo",
+    "name": "アサヒナカワトンボ",
+    "kana": "あさひなかわとんぼ",
+    "cat": "昆虫",
+    "food": "小さな虫",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "ashinagabachi",
+    "name": "アシナガバチ",
+    "kana": "あしながばち",
+    "cat": "昆虫",
+    "food": "昆虫",
+    "env": "木・軒下",
+    "poison": true,
+    "level": "特級"
+  },
+  {
+    "id": "amagaeru",
+    "name": "アマガエル",
+    "kana": "あまがえる",
+    "cat": "両生類",
+    "food": "昆虫",
+    "env": "田んぼ・草むら",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "oikawa",
+    "name": "オイカワ",
+    "kana": "おいかわ",
+    "cat": "魚",
+    "food": "小さな虫",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "kabutomushi",
+    "name": "カブトムシ",
+    "kana": "かぶとむし",
+    "cat": "昆虫",
+    "food": "樹液",
+    "env": "雑木林",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "kawamutsu",
+    "name": "カワムツ",
+    "kana": "かわむつ",
+    "cat": "魚",
+    "food": "小動物",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "genjibotaru",
+    "name": "ゲンジボタル",
+    "kana": "げんじぼたる",
+    "cat": "昆虫",
+    "food": "花のみつ",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "kooniyanma",
+    "name": "コオニヤンマ",
+    "kana": "こおにやんま",
+    "cat": "昆虫",
+    "food": "昆虫",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "gomadarakamikiri",
+    "name": "ゴマダラカミキリ",
+    "kana": "ごまだらかみきり",
+    "cat": "昆虫",
+    "food": "木",
+    "env": "林",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "koshibosoyanma",
+    "name": "コシボソヤンマ",
+    "kana": "こしぼそやんま",
+    "cat": "昆虫",
+    "food": "昆虫",
+    "env": "森林",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "shiokaratonbo",
+    "name": "シオカラトンボ",
+    "kana": "しおからとんぼ",
+    "cat": "昆虫",
+    "food": "昆虫",
+    "env": "池",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "jumbotanishi",
+    "name": "ジャンボタニシ",
+    "kana": "じゃんぼたにし",
+    "cat": "貝",
+    "food": "植物",
+    "env": "田んぼ",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "sujiebi",
+    "name": "スジエビ",
+    "kana": "すじえび",
+    "cat": "甲殻類",
+    "food": "雑食",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "suzumebachi",
+    "name": "スズメバチ",
+    "kana": "すずめばち",
+    "cat": "昆虫",
+    "food": "昆虫",
+    "env": "林",
+    "poison": true,
+    "level": "特級"
+  },
+  {
+    "id": "taikouchi",
+    "name": "タイコウチ",
+    "kana": "たいこうち",
+    "cat": "昆虫",
+    "food": "小魚",
+    "env": "池",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "tentoumushi",
+    "name": "テントウムシ",
+    "kana": "てんとうむし",
+    "cat": "昆虫",
+    "food": "アブラムシ",
+    "env": "草むら",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "nihonunagi",
+    "name": "ニホンウナギ",
+    "kana": "にほんうなぎ",
+    "cat": "魚",
+    "food": "小動物",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "nokogirikuwagata",
+    "name": "ノコギリクワガタ",
+    "kana": "のこぎりくわがた",
+    "cat": "昆虫",
+    "food": "樹液",
+    "env": "林",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "himetaikouchi",
+    "name": "ヒメタイコウチ",
+    "kana": "ひめたいこうち",
+    "cat": "昆虫",
+    "food": "小動物",
+    "env": "池",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "hyoumonchou",
+    "name": "ヒョウモンチョウ",
+    "kana": "ひょうもんちょう",
+    "cat": "昆虫",
+    "food": "花のみつ",
+    "env": "草地",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "planaria",
+    "name": "プラナリア",
+    "kana": "ぷらなりあ",
+    "cat": "その他",
+    "food": "小動物",
+    "env": "きれいな川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "mashijimi",
+    "name": "マシジミ",
+    "kana": "ましじみ",
+    "cat": "貝",
+    "food": "プランクトン",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "mizumushi",
+    "name": "ミズムシ",
+    "kana": "みずむし",
+    "cat": "甲殻類",
+    "food": "落ち葉",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "mitsubachi",
+    "name": "ミツバチ",
+    "kana": "みつばち",
+    "cat": "昆虫",
+    "food": "花のみつ",
+    "env": "花だん",
+    "poison": true,
+    "level": "特級"
+  },
+  {
+    "id": "minaminumaebi",
+    "name": "ミナミヌマエビ",
+    "kana": "みなみぬまえび",
+    "cat": "甲殻類",
+    "food": "藻",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "mukade",
+    "name": "ムカデ",
+    "kana": "むかで",
+    "cat": "その他",
+    "food": "昆虫",
+    "env": "石の下",
+    "poison": true,
+    "level": "特級"
+  },
+  {
+    "id": "moroko",
+    "name": "モロコ",
+    "kana": "もろこ",
+    "cat": "魚",
+    "food": "小さな虫",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "kawayoshinobori",
+    "name": "カワヨシノボリ",
+    "kana": "かわよしのぼり",
+    "cat": "魚",
+    "food": "小動物",
+    "env": "川",
+    "poison": false,
+    "level": "特級"
+  },
+  {
+    "id": "gokiburi",
+    "name": "ゴキブリ",
+    "kana": "ごきぶり",
+    "cat": "昆虫",
+    "food": "雑食",
+    "env": "建物周辺",
+    "poison": false,
+    "level": "SECRET"
   }
 ]
