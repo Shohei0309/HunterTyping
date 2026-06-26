@@ -48,7 +48,21 @@ function rankText(id){const f=foundInfo(id);const order=['easy','middle','hard',
 function foundCount(){return Object.keys(state.found||{}).filter(id=>isFound(id)).length;}
 function updateRank(){const n=foundCount();let title='見習いハンター';if(n>=55)title='生き物博士・完全制覇';else if(n>=25)title='生き物博士';else if(n>=16)title='上級ハンター';else if(n>=8)title='中級ハンター';document.getElementById('rankBox').textContent=`${title}　発見 ${n}/${ANIMALS.length}`;}
 function renderLevels(){const box=document.getElementById('levelCards');box.innerHTML='';LEVELS.forEach(l=>{const locked=l.need&&!state.cleared[l.need];const card=document.createElement('div');card.className='levelCard'+(locked?' locked':'');card.innerHTML=`<div class="badge">${l.badge}</div><h2>${l.name}</h2><p>${l.desc}</p><p class="small">ベスト：${state.best[l.id]||0}点</p><button class="challenge" ${locked?'disabled':''}>挑戦する</button>`;card.querySelector('button').onclick=()=>startGame(l);box.appendChild(card);});}
-function animalsForLevel(level){if(level.id==='easy')return ANIMALS.filter(a=>['ari','kumo','kani','ebi','medaka','kaeru','dojou','ga','semi','hachi','namekuji','mimizu','dangomushi','kawanina','amenbo'].includes(a.id));return [...ANIMALS];}
+function animalsForLevel(level){
+  const normalAnimals = ANIMALS.filter(a => a.level === '初級');
+
+  if(level.id === 'easy'){
+    return normalAnimals.filter(a =>
+      ['ari','kumo','kani','ebi','medaka','kaeru','dojou','ga','semi','hachi','namekuji','mimizu','dangomushi','kawanina','amenbo'].includes(a.id)
+    );
+  }
+
+  if(level.id === 'middle' || level.id === 'hard'){
+    return normalAnimals;
+  }
+
+  return normalAnimals;
+}if(level.id==='easy')return ANIMALS.filter(a=>['ari','kumo','kani','ebi','medaka','kaeru','dojou','ga','semi','hachi','namekuji','mimizu','dangomushi','kawanina','amenbo'].includes(a.id));return [...ANIMALS];}
 function startGame(level){currentLevel=level;pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);document.getElementById('answer').focus();}
 function nextQuestion(){if(pool.length===0)pool=shuffle(animalsForLevel(currentLevel));current=pool.pop();document.getElementById('qImage').src=IMG(current.id);document.getElementById('qName').textContent=current.name;document.getElementById('romaji').textContent=currentLevel.showRoma?romajiOptions(current.kana)[0]:'';document.getElementById('answer').value='';document.getElementById('result').textContent='';}
 document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();const ok=romajiOptions(current.kana).includes(v);if(ok){score++;if(!state.found[current.id]||state.found[current.id]===true)state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
