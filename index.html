@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>生き物ハンタータイピング Ver1.2</title>
+<title>生き物ハンタータイピング Ver1.3</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;background:#e9fbff;color:#213}button,input{font:inherit}.screen{display:none;min-height:100dvh}.active{display:block}#cover{place-items:center;padding:10px;background:linear-gradient(180deg,#8ee7ff,#eafff2)}#cover.active{display:grid}.coverCard{position:relative;width:min(100vw,calc((100dvh - 20px)*4/3));aspect-ratio:4/3;max-height:calc(100dvh - 20px);border-radius:28px;overflow:hidden;box-shadow:0 20px 50px #0003;background:#dff7ff}.coverCard img{width:100%;height:100%;object-fit:contain}.startBtn{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);font-size:clamp(22px,4vw,38px);font-weight:900;padding:.55em 1.4em;border:0;border-radius:999px;background:linear-gradient(#ffec67,#ff9f1c);color:#5a2d00;box-shadow:0 8px 0 #b86400,0 12px 25px #0004}.app{min-height:100dvh;background:linear-gradient(180deg,#d7f7ff,#f6fff2);padding:12px}.top{display:flex;gap:10px;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 10px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:12px 18px;border:3px solid #22577a;border-radius:18px;background:#fff;font-weight:900;color:#22577a}.tab.on{background:#22577a;color:white}.rankbox{font-weight:900;background:#fff;padding:10px 14px;border-radius:18px;border:3px solid #57cc99}.panel{max-width:1100px;margin:auto;background:#ffffffdd;border:4px solid #90e0ef;border-radius:28px;padding:18px;box-shadow:0 8px 25px #0001}h1,h2{margin:.2em 0 .5em}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.levelCard{position:relative;border-radius:28px;padding:20px;min-height:260px;background:linear-gradient(180deg,#fff,#f7fbff);border:4px solid #ddd;box-shadow:0 10px 22px #0002;text-align:center}.levelCard h2{font-size:30px}.badge{font-size:56px}.locked{filter:grayscale(1);opacity:.65}.challenge{margin-top:14px;padding:12px 20px;border:0;border-radius:999px;background:#06d6a0;color:#063;font-weight:900;box-shadow:0 5px 0 #04966f}.challenge:disabled{background:#ccc;color:#666;box-shadow:none}.gameHead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.qbox{text-align:center;padding:22px;background:#fff;border-radius:28px;border:4px solid #ffd166;margin:15px 0}.qImage{width:min(330px,78vw);height:210px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.qname{font-size:clamp(34px,7vw,68px);font-weight:900}.romaji{font-size:clamp(22px,4vw,36px);color:#118ab2;font-weight:900;letter-spacing:2px}#answer{width:min(92vw,650px);font-size:32px;padding:14px 18px;border:4px solid #22577a;border-radius:20px;text-align:center}.result{font-size:28px;font-weight:900;min-height:40px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}.bioCard{background:linear-gradient(180deg,#fff,#f3fff8);border:3px solid #57cc99;border-radius:20px;padding:10px;text-align:center;min-height:235px;box-shadow:0 6px 14px #0001;position:relative;cursor:pointer}.bioCard.locked2{background:#eee;border-color:#ccc;color:#999}.cardImgBox{height:130px;display:grid;place-items:center;margin:4px 0}.cardImg{max-width:100%;max-height:126px;object-fit:contain;filter:drop-shadow(0 5px 6px #0002)}.skull{position:absolute;left:12px;top:10px;font-size:30px}.medal{position:absolute;right:12px;top:10px;font-size:30px}.filterBar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.filterBar button{border:2px solid #22577a;background:white;border-radius:999px;padding:8px 12px;font-weight:900}.filterBar .on{background:#22577a;color:white}.modal{position:fixed;inset:0;background:#0007;display:none;place-items:center;padding:20px;z-index:5}.modal.show{display:grid}.modalCard{background:#fff;border-radius:28px;padding:22px;max-width:560px;width:100%;border:5px solid #ffd166;text-align:center;max-height:90dvh;overflow:auto}.modalImg{width:min(340px,80vw);height:220px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.close{float:right;border:0;background:#ef476f;color:white;border-radius:999px;padding:8px 12px;font-weight:900}.cert{padding:25px;border:8px double #a47148;border-radius:20px;background:#fffdf2}.small{font-size:14px;color:#567}.danger{color:#d90429;font-weight:900}.progress{height:16px;background:#d7f7ff;border-radius:999px;overflow:hidden;border:2px solid #90e0ef}.progress>div{height:100%;width:0;background:#57cc99}@media(max-width:800px){.cards{grid-template-columns:1fr}.top{align-items:stretch;flex-direction:column}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab{padding:10px 8px}}
 </style>
@@ -12,7 +12,7 @@
 <section id="cover" class="screen active"><div class="coverCard"><img src="assets/images/cover.png" onerror="this.style.display='none'" alt="生き物ハンター表紙"><button class="startBtn" onclick="showApp()">スタート</button></div></section>
 <main id="app" class="screen app">
   <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング練習</button><button class="tab" id="tabBook" onclick="showTab('book')">集めた生き物リスト</button><button class="tab" onclick="resetData()">記録リセット</button></div><div class="rankbox" id="rankBox">生き物博士への道</div></div>
-  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.2</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
+  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.3</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox">残り <span id="timeLeft">60</span> 秒　得点 <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
   <section id="book" class="panel" style="display:none"><h1>集めた生き物リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
 </main>
@@ -28,8 +28,10 @@ const IMG = id => `assets/images/${id}.png`;
 const SAVE_KEY='ikimonoHunterV10';
 const LEVELS=[
  {id:'easy',name:'初級研究員',badge:'🥉',showRoma:true,need:null,desc:'短い生き物中心。まずはここから！'},
- {id:'middle',name:'中級研究員',badge:'🥈',showRoma:true,need:'easy',desc:'25種すべて。ローマ字表示あり。'},
- {id:'hard',name:'上級研究員',badge:'🥇',showRoma:false,need:'middle',desc:'25種すべて。ローマ字表示なし。'}
+ {id:'middle',name:'中級研究員',badge:'🥈',showRoma:true,need:'easy',desc:'通常図鑑25種。ローマ字表示あり。'},
+ {id:'hard',name:'上級研究員',badge:'🥇',showRoma:false,need:'middle',desc:'通常図鑑25種。ローマ字表示なし。'},
+ {id:'special',name:'特級研究員',badge:'👑',showRoma:false,need:'hard',desc:'特級図鑑の生き物だけに挑戦！'},
+ {id:'secret',name:'SECRET',badge:'G',showRoma:false,needAll:['easy','middle','hard','special'],desc:'すべての難易度をクリアすると出現する秘密の生き物。'}
 ];
 let state=loadState(), currentLevel=null, pool=[], current=null, timer=null, time=60, score=0, filter='すべて';
 function loadState(){try{return JSON.parse(localStorage.getItem(SAVE_KEY))||{found:{},best:{},cleared:{}}}catch(e){return{found:{},best:{},cleared:{}}}}
@@ -47,7 +49,41 @@ function rankMarks(id){const f=foundInfo(id);const order=['easy','middle','hard'
 function rankText(id){const f=foundInfo(id);const order=['easy','middle','hard','special','secret'];const names=order.filter(k=>f[k]).map(k=>LEVEL_BADGES[k]+' '+LEVEL_NAMES[k]);return names.length?names.join(' ／ '):'未発見';}
 function foundCount(){return Object.keys(state.found||{}).filter(id=>isFound(id)).length;}
 function updateRank(){const n=foundCount();let title='見習いハンター';if(n>=55)title='生き物博士・完全制覇';else if(n>=25)title='生き物博士';else if(n>=16)title='上級ハンター';else if(n>=8)title='中級ハンター';document.getElementById('rankBox').textContent=`${title}　発見 ${n}/${ANIMALS.length}`;}
-function renderLevels(){const box=document.getElementById('levelCards');box.innerHTML='';LEVELS.forEach(l=>{const locked=l.need&&!state.cleared[l.need];const card=document.createElement('div');card.className='levelCard'+(locked?' locked':'');card.innerHTML=`<div class="badge">${l.badge}</div><h2>${l.name}</h2><p>${l.desc}</p><p class="small">ベスト：${state.best[l.id]||0}点</p><button class="challenge" ${locked?'disabled':''}>挑戦する</button>`;card.querySelector('button').onclick=()=>startGame(l);box.appendChild(card);});}
+function isLevelLocked(level){
+  if(level.need && !state.cleared[level.need]) return true;
+  if(level.needAll && level.needAll.some(k => !state.cleared[k])) return true;
+  return false;
+}
+function levelUnlockText(level){
+  if(!isLevelLocked(level)) return '';
+  if(level.needAll) return '解放条件：初級・中級・上級・特級をすべてクリア';
+  if(level.need) return `解放条件：${LEVEL_NAMES[level.need]}をクリア`;
+  return '';
+}
+function remainingForLevel(level){
+  const list = animalsForLevel(level);
+  const remaining = list.filter(a => !foundInfo(a.id)[level.id]).length;
+  return {remaining, total:list.length};
+}
+function renderLevels(){
+  const box=document.getElementById('levelCards');
+  box.innerHTML='';
+  LEVELS.forEach(l=>{
+    const locked=isLevelLocked(l);
+    const count=remainingForLevel(l);
+    const card=document.createElement('div');
+    card.className='levelCard'+(locked?' locked':'');
+    card.innerHTML=`<div class="badge">${l.badge}</div>
+      <h2>${l.name}</h2>
+      <p>${l.desc}</p>
+      <p class="small">この難易度であと <b>${count.remaining}</b> / ${count.total} 匹ゲットできる</p>
+      <p class="small">ベスト：${state.best[l.id]||0}点</p>
+      ${locked?`<p class="small danger">${levelUnlockText(l)}</p>`:''}
+      <button class="challenge" ${locked?'disabled':''}>挑戦する</button>`;
+    card.querySelector('button').onclick=()=>startGame(l);
+    box.appendChild(card);
+  });
+}
 function animalsForLevel(level){
   const normalAnimals = ANIMALS.filter(a => a.level === '初級');
 
@@ -61,12 +97,45 @@ function animalsForLevel(level){
     return normalAnimals;
   }
 
+  if(level.id === 'special'){
+    return ANIMALS.filter(a => a.level === '特級');
+  }
+
+  if(level.id === 'secret'){
+    return ANIMALS.filter(a => a.level === 'SECRET');
+  }
+
   return normalAnimals;
 }
 function startGame(level){currentLevel=level;pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);document.getElementById('answer').focus();}
 function nextQuestion(){if(pool.length===0)pool=shuffle(animalsForLevel(currentLevel));current=pool.pop();document.getElementById('qImage').src=IMG(current.id);document.getElementById('qName').textContent=current.name;document.getElementById('romaji').textContent=currentLevel.showRoma?romajiOptions(current.kana)[0]:'';document.getElementById('answer').value='';document.getElementById('result').textContent='';}
 document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();const ok=romajiOptions(current.kana).includes(v);if(ok){score++;if(!state.found[current.id]||state.found[current.id]===true)state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
-function endGame(finished=false){clearInterval(timer);if(currentLevel){state.best[currentLevel.id]=Math.max(state.best[currentLevel.id]||0,score);if(finished&&score>=10)state.cleared[currentLevel.id]=true;save();alert(`${currentLevel.name} 終了！ 得点：${score}点${score>=10?'\nクリア！次のレベルが解放されます。':''}`);}currentLevel=null;renderAll();showTab('home');}
+function endGame(finished=false){
+  clearInterval(timer);
+  if(currentLevel){
+    state.best[currentLevel.id]=Math.max(state.best[currentLevel.id]||0,score);
+    const clearedNow = finished && score>=10;
+    if(clearedNow) state.cleared[currentLevel.id]=true;
+    save();
+    let msg=`${currentLevel.name} 終了！ 得点：${score}点`;
+    if(clearedNow){
+      if(currentLevel.id==='easy') msg+='
+クリア！中級研究員が解放されます。';
+      else if(currentLevel.id==='middle') msg+='
+クリア！上級研究員が解放されます。';
+      else if(currentLevel.id==='hard') msg+='
+クリア！特級研究員が解放されます。';
+      else if(currentLevel.id==='special') msg+='
+クリア！SECRETが解放されます。';
+      else msg+='
+クリア！';
+    }
+    alert(msg);
+  }
+  currentLevel=null;
+  renderAll();
+  showTab('home');
+}
 function renderBook(){const cats=['すべて',...Array.from(new Set(ANIMALS.map(a=>a.cat)))];const f=document.getElementById('filters');f.innerHTML='';cats.forEach(c=>{const b=document.createElement('button');b.textContent=c;b.className=filter===c?'on':'';b.onclick=()=>{filter=c;renderBook()};f.appendChild(b);});const data=filter==='すべて'?ANIMALS:ANIMALS.filter(a=>a.cat===filter);const grid=document.getElementById('bookGrid');grid.innerHTML='';data.forEach(a=>{const found=isFound(a.id);const card=document.createElement('div');card.className='bioCard'+(found?'':' locked2');card.innerHTML=`${a.poison?'<div class="skull">☠️</div>':''}<div class="medal">${found?rankMarks(a.id):'🔒'}</div><div class="cardImgBox"><img class="cardImg" src="${found?IMG(a.id):IMG('unknown')}" alt="${found?a.name:'未発見'}"></div><h2>${found?a.name:'？？？'}</h2><p class="small">${found?a.cat:'発見すると画像が開放されるよ'}</p><p class="small">${found?'取得：'+rankText(a.id):''}</p>`;card.onclick=()=>found&&openModal(a);grid.appendChild(card);});const n=foundCount();document.getElementById('progressText').textContent=`発見 ${n}/${ANIMALS.length}`;document.getElementById('progressBar').style.width=`${ANIMALS.length? n/ANIMALS.length*100 : 0}%`;}
 function openModal(a){document.getElementById('modalContent').innerHTML=`<img class="modalImg" src="${IMG(a.id)}" alt="${a.name}"><h1>${a.name}</h1><p style="font-size:28px;font-weight:900">取得ランク：${rankText(a.id)}</p><p><b>分類：</b>${a.cat}</p><p><b>エサ：</b>${a.food}</p><p><b>すんでいる環境：</b>${a.env}</p>${a.poison?'<p class="danger">☠️ 毒や針などに注意</p>':''}`;document.getElementById('modal').classList.add('show')}
 function closeModal(){document.getElementById('modal').classList.remove('show')}
