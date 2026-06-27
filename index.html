@@ -161,7 +161,7 @@ function renderLevels(){
     box.appendChild(card);
   });
 }
-function startGame(level){currentLevel=level;if(level.id==='secret'){secretMiss=0;if(secretAttempt<0)secretAttempt=0;}pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);if(level.id!=='secret'){timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);}else{document.getElementById('timeLeft').parentElement.innerHTML='得点 <span id="score">0</span>';}setTimeout(()=>document.getElementById('answer').focus(),50);}
+function startGame(level){document.getElementById('answer').disabled=false;currentLevel=level;if(level.id==='secret'){secretMiss=0;if(secretAttempt<0)secretAttempt=0;}pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);if(level.id!=='secret'){timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);}else{document.getElementById('timeLeft').textContent='∞';document.getElementById('score').textContent=score;}setTimeout(()=>document.getElementById('answer').focus(),50);}
 function nextQuestion(){if(currentLevel&&currentLevel.id==='secret'){renderSecretQuestion();return;}if(pool.length===0)pool=shuffle(animalsForLevel(currentLevel));current=pool.pop();document.getElementById('qImage').src=IMG(current.id);document.getElementById('qName').textContent=current.name;document.getElementById('romaji').textContent=currentLevel.showRoma?romajiOptions(current.kana)[0]:'';document.getElementById('answer').value='';document.getElementById('result').textContent='';}
 document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();if(currentLevel&&currentLevel.id==='secret'){if(v===SECRET_ANSWER){secretComplete();}else{secretMiss++; if(secretMiss>=3){secretGameOver();}else{document.getElementById('result').innerHTML=(document.getElementById('result').innerHTML||'')+`<div class="danger">もう一回！ 残り${3-secretMiss}回</div>`; e.target.value='';}}return;}const ok=romajiOptions(current.kana).includes(v);if(ok){score++;state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
 function endGame(finished=false){clearInterval(timer);if(currentLevel){state.best[currentLevel.id]=Math.max(state.best[currentLevel.id]||0,score);const clear=finished&&score>=10;if(clear)state.cleared[currentLevel.id]=true;save();let msg=`${currentLevel.name} 終了！ 得点：${score}点`;if(clear){if(currentLevel.id==='easy')msg+='\nクリア！中級研究員が解放されます。';else if(currentLevel.id==='middle')msg+='\nクリア！上級研究員が解放されます。';else if(currentLevel.id==='hard')msg+='\nクリア！特級研究員が解放されます。';else if(currentLevel.id==='special')msg+='\nクリア！SECRET解放まであと少し！';else msg+='\nクリア！';}alert(msg);}currentLevel=null;renderAll();showTab('home');}
@@ -234,10 +234,18 @@ function renderSecretQuestion(){
   document.getElementById('answer').value='';
 }
 function secretGameOver(){
-  document.getElementById('result').innerHTML='<div class="secretGameOver">見つけられなかったようだね。<br>もう一回チャレンジしてみよう！</div>';
+  clearInterval(timer);
   secretAttempt++;
+  secretMiss=0;
+  document.getElementById('answer').disabled=true;
+  document.getElementById('result').innerHTML='<div class="secretGameOver">見つけられなかったようだね。<br>もう一回チャレンジしてみよう！</div>';
   save();
-  setTimeout(()=>{currentLevel=null;renderAll();showTab('home');},2600);
+  setTimeout(()=>{
+    document.getElementById('answer').disabled=false;
+    currentLevel=null;
+    renderAll();
+    showTab('home');
+  },2600);
 }
 function secretComplete(){
   const s=ANIMALS.find(a=>a.level==='SECRET');
