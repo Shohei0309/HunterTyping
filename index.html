@@ -13,6 +13,35 @@
 .bioCard.secretCard{border-color:#111;background:radial-gradient(circle at 20% 25%,#fff7 0 2px,transparent 3px),radial-gradient(circle at 80% 40%,#fff9 0 2px,transparent 3px),linear-gradient(180deg,#fff8db,#fff,#fff3b0);background-size:80px 80px,120px 120px,100% 100%;animation:secretGlow 2.1s ease-in-out infinite,sparkleMove 6s linear infinite}
 .bioCard.secretCard h2,.bioCard.secretCard .medal,.bioCard.secretCard .small{color:#7c5200;text-shadow:0 0 6px #facc1588}
 
+
+/* Ver1.5 modal effects */
+.modalCard.specialModal{
+  border-color:#a855f7;
+  background:
+    radial-gradient(circle at 18% 22%,#ffffff 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 35%,#ffffff 0 2px,transparent 3px),
+    linear-gradient(180deg,#ffffff,#fbf5ff);
+  background-size:90px 90px,130px 130px,100% 100%;
+  animation:specialGlow 2.6s ease-in-out infinite,sparkleMove 7s linear infinite;
+}
+.modalCard.secretModal{
+  border-color:#facc15;
+  background:
+    radial-gradient(circle at 18% 22%,#fff9 0 2px,transparent 3px),
+    radial-gradient(circle at 80% 38%,#fff 0 2px,transparent 3px),
+    linear-gradient(180deg,#fff8db,#ffffff,#fff3b0);
+  background-size:90px 90px,130px 130px,100% 100%;
+  animation:secretGlow 2.1s ease-in-out infinite,sparkleMove 6s linear infinite;
+}
+.modalCard.secretModal h1,
+.modalCard.secretModal p{
+  color:#7c5200;
+  text-shadow:0 0 6px #facc1588;
+}
+.modalCard.specialModal h1{
+  text-shadow:0 0 8px #d8b4feaa;
+}
+
 @media(max-width:800px){.top{align-items:stretch;flex-direction:column}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab{padding:10px 8px}}
 </style>
 </head>
@@ -109,8 +138,15 @@ function nextQuestion(){if(pool.length===0)pool=shuffle(animalsForLevel(currentL
 document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();const ok=romajiOptions(current.kana).includes(v);if(ok){score++;state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
 function endGame(finished=false){clearInterval(timer);if(currentLevel){state.best[currentLevel.id]=Math.max(state.best[currentLevel.id]||0,score);const clear=finished&&score>=10;if(clear)state.cleared[currentLevel.id]=true;save();let msg=`${currentLevel.name} 終了！ 得点：${score}点`;if(clear){if(currentLevel.id==='easy')msg+='\nクリア！中級研究員が解放されます。';else if(currentLevel.id==='middle')msg+='\nクリア！上級研究員が解放されます。';else if(currentLevel.id==='hard')msg+='\nクリア！特級研究員が解放されます。';else if(currentLevel.id==='special')msg+='\nクリア！SECRET解放まであと少し！';else msg+='\nクリア！';}alert(msg);}currentLevel=null;renderAll();showTab('home');}
 function renderBook(){const cats=['すべて','通常図鑑','特級図鑑','SECRET',...Array.from(new Set(ANIMALS.map(a=>a.cat)))];const f=document.getElementById('filters');f.innerHTML='';cats.forEach(c=>{const b=document.createElement('button');b.textContent=c;b.className=filter===c?'on':'';b.onclick=()=>{filter=c;renderBook()};f.appendChild(b);});let data=ANIMALS;if(filter==='通常図鑑')data=ANIMALS.filter(a=>a.level==='初級');else if(filter==='特級図鑑')data=ANIMALS.filter(a=>a.level==='特級');else if(filter==='SECRET')data=ANIMALS.filter(a=>a.level==='SECRET');else if(filter!=='すべて')data=ANIMALS.filter(a=>a.cat===filter);const grid=document.getElementById('bookGrid');grid.innerHTML='';data.forEach(a=>{const found=isFound(a.id);const card=document.createElement('div');card.className='bioCard'+(found?'':' locked2')+(found&&a.level==='特級'?' specialCard':'')+(found&&a.level==='SECRET'?' secretCard':'')+(found&&a.level==='特級'?' specialFound':'')+(found&&a.level==='SECRET'?' secretFound':'');card.innerHTML=`${a.poison?'<div class="skull">☠️</div>':''}<div class="medal">${found?rankMarks(a.id):'🔒'}</div><div class="cardImgBox"><img class="cardImg" src="${found?IMG(a.id):IMG('unknown')}" alt="${found?a.name:'未発見'}"></div><h2>${found?a.name:'？？？'}</h2><p class="small">${found?a.cat:'発見すると画像が開放されるよ'}</p><p class="small">${found?'取得：'+rankText(a.id):''}</p>`;card.onclick=()=>found&&openModal(a);grid.appendChild(card);});const n=foundCount();document.getElementById('progressText').textContent=`発見 ${n}/${ANIMALS.length}`;document.getElementById('progressBar').style.width=`${ANIMALS.length?n/ANIMALS.length*100:0}%`;}
-function openModal(a){document.getElementById('modalContent').innerHTML=`<img class="modalImg" src="${IMG(a.id)}" alt="${a.name}"><h1>${a.name}</h1><p style="font-size:28px;font-weight:900">取得ランク：${rankText(a.id)}</p><p><b>分類：</b>${a.cat}</p><p><b>エサ：</b>${a.food}</p><p><b>すんでいる環境：</b>${a.env}</p>${a.poison?'<p class="danger">☠️ 毒や針などに注意</p>':''}`;document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
+function openModal(a){
+  const modalCard=document.querySelector('#modal .modalCard');
+  modalCard.classList.remove('specialModal','secretModal');
+  if(a.level==='特級') modalCard.classList.add('specialModal');
+  if(a.level==='SECRET') modalCard.classList.add('secretModal');
+  document.getElementById('modalContent').innerHTML=`<img class="modalImg" src="${IMG(a.id)}" alt="${a.name}"><h1>${a.name}</h1><p style="font-size:28px;font-weight:900">取得ランク：${rankText(a.id)}</p><p><b>分類：</b>${a.cat}</p><p><b>エサ：</b>${a.food}</p><p><b>すんでいる環境：</b>${a.env}</p>${a.poison?'<p class="danger">☠️ 毒や針などに注意</p>':''}`;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal(){document.getElementById('modal').classList.remove('show');document.querySelector('#modal .modalCard').classList.remove('specialModal','secretModal')}
 function shuffle(arr){return arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(v=>v[1])}
 const kanaMap={'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa','し':'shi','す':'su','せ':'se','そ':'so','た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to','な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no','は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho','ま':'ma','み':'mi','む':'mu','め':'me','も':'mo','や':'ya','ゆ':'yu','よ':'yo','ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro','わ':'wa','を':'wo','ん':'n','が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go','ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo','だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do','ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo','ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po'};
 const combo={'きゃ':'kya','きゅ':'kyu','きょ':'kyo','しゃ':'sha','しゅ':'shu','しょ':'sho','ちゃ':'cha','ちゅ':'chu','ちょ':'cho','にゃ':'nya','にゅ':'nyu','にょ':'nyo','ひゃ':'hya','ひゅ':'hyu','ひょ':'hyo','みゃ':'mya','みゅ':'myu','みょ':'myo','りゃ':'rya','りゅ':'ryu','りょ':'ryo','ぎゃ':'gya','ぎゅ':'gyu','ぎょ':'gyo','じゃ':'ja','じゅ':'ju','じょ':'jo','びゃ':'bya','びゅ':'byu','びょ':'byo','ぴゃ':'pya','ぴゅ':'pyu','ぴょ':'pyo'};
