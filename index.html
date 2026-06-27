@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>生き物ハンタータイピング Ver1.5 デバッグ版安定版</title>
+<title>生き物ハンタータイピング Ver1.6 SECRET開発版安定版</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;background:#e9fbff;color:#213}button,input{font:inherit}.screen{display:none;min-height:100dvh}.active{display:block}#cover{place-items:center;padding:10px;background:linear-gradient(180deg,#8ee7ff,#eafff2)}#cover.active{display:grid}.coverCard{position:relative;width:min(100vw,calc((100dvh - 20px)*4/3));aspect-ratio:4/3;max-height:calc(100dvh - 20px);border-radius:28px;overflow:hidden;box-shadow:0 20px 50px #0003;background:#dff7ff}.coverCard img{width:100%;height:100%;object-fit:contain}.startBtn{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);font-size:clamp(22px,4vw,38px);font-weight:900;padding:.55em 1.4em;border:0;border-radius:999px;background:linear-gradient(#ffec67,#ff9f1c);color:#5a2d00;box-shadow:0 8px 0 #b86400,0 12px 25px #0004}.app{min-height:100dvh;background:linear-gradient(180deg,#d7f7ff,#f6fff2);padding:12px}.top{display:flex;gap:10px;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 10px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:12px 18px;border:3px solid #22577a;border-radius:18px;background:#fff;font-weight:900;color:#22577a}.tab.on{background:#22577a;color:white}.rankbox{font-weight:900;background:#fff;padding:10px 14px;border-radius:18px;border:3px solid #57cc99}.panel{max-width:1100px;margin:auto;background:#ffffffdd;border:4px solid #90e0ef;border-radius:28px;padding:18px;box-shadow:0 8px 25px #0001}h1,h2{margin:.2em 0 .5em}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.levelCard{position:relative;border-radius:28px;padding:20px;min-height:270px;background:linear-gradient(180deg,#fff,#f7fbff);border:4px solid #ddd;box-shadow:0 10px 22px #0002;text-align:center}.levelCard h2{font-size:28px}.badge{font-size:56px}.locked{filter:grayscale(1);opacity:.62}.challenge{margin-top:14px;padding:12px 20px;border:0;border-radius:999px;background:#06d6a0;color:#063;font-weight:900;box-shadow:0 5px 0 #04966f}.challenge:disabled{background:#ccc;color:#666;box-shadow:none}.gameHead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.qbox{text-align:center;padding:22px;background:#fff;border-radius:28px;border:4px solid #ffd166;margin:15px 0}.qImage{width:min(330px,78vw);height:210px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.qname{font-size:clamp(34px,7vw,68px);font-weight:900}.romaji{font-size:clamp(22px,4vw,36px);color:#118ab2;font-weight:900;letter-spacing:2px}#answer{width:min(92vw,650px);font-size:32px;padding:14px 18px;border:4px solid #22577a;border-radius:20px;text-align:center}.result{font-size:28px;font-weight:900;min-height:40px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}.bioCard{background:linear-gradient(180deg,#fff,#f3fff8);border:3px solid #57cc99;border-radius:20px;padding:10px;text-align:center;min-height:245px;box-shadow:0 6px 14px #0001;position:relative;cursor:pointer}.bioCard.specialFound{border-color:#b983ff;background:linear-gradient(180deg,#fff,#f9f2ff)}.bioCard.secretFound{border-color:#222;background:linear-gradient(135deg,#fff,#fdf6ff,#efffff)}.bioCard.locked2{background:#eee;border-color:#ccc;color:#999}.cardImgBox{height:130px;display:grid;place-items:center;margin:4px 0}.cardImg{max-width:100%;max-height:126px;object-fit:contain;filter:drop-shadow(0 5px 6px #0002)}.skull{position:absolute;left:12px;top:10px;font-size:30px}.medal{position:absolute;right:12px;top:10px;font-size:30px}.filterBar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.filterBar button{border:2px solid #22577a;background:white;border-radius:999px;padding:8px 12px;font-weight:900}.filterBar .on{background:#22577a;color:white}.modal{position:fixed;inset:0;background:#0007;display:none;place-items:center;padding:20px;z-index:5}.modal.show{display:grid}.modalCard{background:#fff;border-radius:28px;padding:22px;max-width:560px;width:100%;border:5px solid #ffd166;text-align:center;max-height:90dvh;overflow:auto}.modalImg{width:min(340px,80vw);height:220px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.close{float:right;border:0;background:#ef476f;color:white;border-radius:999px;padding:8px 12px;font-weight:900}.small{font-size:14px;color:#567}.danger{color:#d90429;font-weight:900}.progress{height:16px;background:#d7f7ff;border-radius:999px;overflow:hidden;border:2px solid #90e0ef}.progress>div{height:100%;width:0;background:#57cc99}
 @keyframes specialGlow{0%{box-shadow:0 0 8px #b967ff55,0 0 0 3px #b967ff;border-color:#a855f7}50%{box-shadow:0 0 22px #f0abfcaa,0 0 0 3px #f0abfc;border-color:#e879f9}100%{box-shadow:0 0 8px #b967ff55,0 0 0 3px #b967ff;border-color:#a855f7}}
@@ -14,7 +14,7 @@
 .bioCard.secretCard h2,.bioCard.secretCard .medal,.bioCard.secretCard .small{color:#7c5200;text-shadow:0 0 6px #facc1588}
 
 
-/* Ver1.5 modal effects */
+/* Ver1.6 SECRET開発版 modal effects */
 .modalCard.specialModal{
   border-color:#a855f7;
   background:
@@ -42,6 +42,20 @@
   text-shadow:0 0 8px #d8b4feaa;
 }
 
+
+/* Ver1.6 SECRET dev tools */
+.devPanel{
+  position:fixed;right:14px;bottom:14px;z-index:20;background:#ffffffee;border:3px solid #22577a;border-radius:18px;
+  box-shadow:0 8px 25px #0003;padding:10px;max-width:320px;font-size:14px
+}
+.devPanel h3{margin:0 0 8px;font-size:16px}
+.devPanel button{margin:3px;padding:6px 9px;border:2px solid #22577a;border-radius:999px;background:white;font-weight:900}
+.devPanel button:hover{background:#e9fbff}
+.secretHintBox{margin-top:12px;font-size:22px;font-weight:900;line-height:1.6;color:#213;text-align:left;display:inline-block}
+.secretRomaHint{font-size:32px;color:#118ab2;font-weight:900;letter-spacing:5px;margin-top:8px}
+.secretGameOver{font-size:34px;font-weight:900;color:#ef476f;margin-top:18px;line-height:1.5}
+.secretComplete{font-size:38px;font-weight:900;color:#b8860b;text-shadow:0 0 10px #facc15;margin-top:15px}
+
 @media(max-width:800px){.top{align-items:stretch;flex-direction:column}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab{padding:10px 8px}}
 </style>
 </head>
@@ -49,10 +63,24 @@
 <section id="cover" class="screen active"><div class="coverCard"><img src="assets/images/cover.png" onerror="this.style.display='none'" alt="生き物ハンター表紙"><button class="startBtn" onclick="showApp()">スタート</button></div></section>
 <main id="app" class="screen app">
   <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング練習</button><button class="tab" id="tabBook" onclick="showTab('book')">集めた生き物リスト</button><button class="tab" onclick="resetData()">記録リセット</button></div><div class="rankbox" id="rankBox">読み込み中...</div></div>
-  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.5 デバッグ版安定版</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
+  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.6 SECRET開発版安定版</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox">残り <span id="timeLeft">60</span> 秒　得点 <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
   <section id="book" class="panel" style="display:none"><h1>集めた生き物リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
 </main>
+
+<div class="devPanel" id="devPanel">
+  <h3>🔧 SECRETデバッグ</h3>
+  <button onclick="devSecret(0)">ヒント0</button>
+  <button onclick="devSecret(1)">ヒント1</button>
+  <button onclick="devSecret(2)">ヒント2</button>
+  <button onclick="devSecret(3)">ヒント3</button>
+  <button onclick="devSecret(4)">ローマ字g</button>
+  <button onclick="devSecret(5)">ローマ字go</button>
+  <button onclick="devSecret(8)">ローマ字gokib</button>
+  <button onclick="devUnlockSecret()">SECRET解放</button>
+  <button onclick="devCompleteSecret()">SECRET取得</button>
+</div>
+
 <div class="modal" id="modal"><div class="modalCard"><button class="close" onclick="closeModal()">とじる</button><div id="modalContent"></div></div></div>
 <script>
 let ANIMALS=[];
@@ -117,7 +145,7 @@ function animalsForLevel(level){
 function remainingForLevel(level){const list=animalsForLevel(level);return {total:list.length,remaining:list.filter(a=>!foundInfo(a.id)[level.id]).length};}
 function isLevelVisible(level){
   if(level.id==='special') return !!state.cleared.hard;
-  if(level.id==='secret') return !!(state.cleared.easy && state.cleared.middle && state.cleared.hard && state.cleared.special);
+  if(level.id==='secret') return allNonSecretCollected();
   return true;
 }
 function renderLevels(){
@@ -133,9 +161,9 @@ function renderLevels(){
     box.appendChild(card);
   });
 }
-function startGame(level){currentLevel=level;pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);setTimeout(()=>document.getElementById('answer').focus(),50);}
-function nextQuestion(){if(pool.length===0)pool=shuffle(animalsForLevel(currentLevel));current=pool.pop();document.getElementById('qImage').src=IMG(current.id);document.getElementById('qName').textContent=current.name;document.getElementById('romaji').textContent=currentLevel.showRoma?romajiOptions(current.kana)[0]:'';document.getElementById('answer').value='';document.getElementById('result').textContent='';}
-document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();const ok=romajiOptions(current.kana).includes(v);if(ok){score++;state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
+function startGame(level){currentLevel=level;if(level.id==='secret'){secretMiss=0;if(secretAttempt<0)secretAttempt=0;}pool=shuffle(animalsForLevel(level));score=0;time=60;document.getElementById('score').textContent=score;document.getElementById('timeLeft').textContent=time;document.getElementById('gameTitle').textContent=level.name;document.getElementById('home').style.display='none';document.getElementById('book').style.display='none';document.getElementById('game').style.display='block';document.getElementById('tabHome').classList.remove('on');document.getElementById('tabBook').classList.remove('on');nextQuestion();clearInterval(timer);if(level.id!=='secret'){timer=setInterval(()=>{time--;document.getElementById('timeLeft').textContent=time;if(time<=0)endGame(true)},1000);}else{document.getElementById('timeLeft').parentElement.innerHTML='得点 <span id="score">0</span>';}setTimeout(()=>document.getElementById('answer').focus(),50);}
+function nextQuestion(){if(currentLevel&&currentLevel.id==='secret'){renderSecretQuestion();return;}if(pool.length===0)pool=shuffle(animalsForLevel(currentLevel));current=pool.pop();document.getElementById('qImage').src=IMG(current.id);document.getElementById('qName').textContent=current.name;document.getElementById('romaji').textContent=currentLevel.showRoma?romajiOptions(current.kana)[0]:'';document.getElementById('answer').value='';document.getElementById('result').textContent='';}
+document.getElementById('answer').addEventListener('keydown',e=>{if(e.key==='Enter'){const v=e.target.value.trim().toLowerCase();if(currentLevel&&currentLevel.id==='secret'){if(v===SECRET_ANSWER){secretComplete();}else{secretMiss++; if(secretMiss>=3){secretGameOver();}else{document.getElementById('result').innerHTML=(document.getElementById('result').innerHTML||'')+`<div class="danger">もう一回！ 残り${3-secretMiss}回</div>`; e.target.value='';}}return;}const ok=romajiOptions(current.kana).includes(v);if(ok){score++;state.found[current.id]=foundInfo(current.id);state.found[current.id][currentLevel.id]=true;document.getElementById('score').textContent=score;document.getElementById('result').textContent='正解！';save();nextQuestion();}else{document.getElementById('result').textContent='もう一回！';e.target.value='';}}});
 function endGame(finished=false){clearInterval(timer);if(currentLevel){state.best[currentLevel.id]=Math.max(state.best[currentLevel.id]||0,score);const clear=finished&&score>=10;if(clear)state.cleared[currentLevel.id]=true;save();let msg=`${currentLevel.name} 終了！ 得点：${score}点`;if(clear){if(currentLevel.id==='easy')msg+='\nクリア！中級研究員が解放されます。';else if(currentLevel.id==='middle')msg+='\nクリア！上級研究員が解放されます。';else if(currentLevel.id==='hard')msg+='\nクリア！特級研究員が解放されます。';else if(currentLevel.id==='special')msg+='\nクリア！SECRET解放まであと少し！';else msg+='\nクリア！';}alert(msg);}currentLevel=null;renderAll();showTab('home');}
 function renderBook(){const cats=['すべて','通常図鑑','特級図鑑','SECRET',...Array.from(new Set(ANIMALS.map(a=>a.cat)))];const f=document.getElementById('filters');f.innerHTML='';cats.forEach(c=>{const b=document.createElement('button');b.textContent=c;b.className=filter===c?'on':'';b.onclick=()=>{filter=c;renderBook()};f.appendChild(b);});let data=ANIMALS;if(filter==='通常図鑑')data=ANIMALS.filter(a=>a.level==='初級');else if(filter==='特級図鑑')data=ANIMALS.filter(a=>a.level==='特級');else if(filter==='SECRET')data=ANIMALS.filter(a=>a.level==='SECRET');else if(filter!=='すべて')data=ANIMALS.filter(a=>a.cat===filter);const grid=document.getElementById('bookGrid');grid.innerHTML='';data.forEach(a=>{const found=isFound(a.id);const card=document.createElement('div');card.className='bioCard'+(found?'':' locked2')+(found&&a.level==='特級'?' specialCard':'')+(found&&a.level==='SECRET'?' secretCard':'')+(found&&a.level==='特級'?' specialFound':'')+(found&&a.level==='SECRET'?' secretFound':'');card.innerHTML=`${a.poison?'<div class="skull">☠️</div>':''}<div class="medal">${found?rankMarks(a.id):'🔒'}</div><div class="cardImgBox"><img class="cardImg" src="${found?IMG(a.id):IMG('unknown')}" alt="${found?a.name:'未発見'}"></div><h2>${found?a.name:'？？？'}</h2><p class="small">${found?a.cat:'発見すると画像が開放されるよ'}</p><p class="small">${found?'取得：'+rankText(a.id):''}</p>`;card.onclick=()=>found&&openModal(a);grid.appendChild(card);});const n=foundCount();document.getElementById('progressText').textContent=`発見 ${n}/${ANIMALS.length}`;document.getElementById('progressBar').style.width=`${ANIMALS.length?n/ANIMALS.length*100:0}%`;}
 function openModal(a){
@@ -152,6 +180,76 @@ const kanaMap={'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き
 const combo={'きゃ':'kya','きゅ':'kyu','きょ':'kyo','しゃ':'sha','しゅ':'shu','しょ':'sho','ちゃ':'cha','ちゅ':'chu','ちょ':'cho','にゃ':'nya','にゅ':'nyu','にょ':'nyo','ひゃ':'hya','ひゅ':'hyu','ひょ':'hyo','みゃ':'mya','みゅ':'myu','みょ':'myo','りゃ':'rya','りゅ':'ryu','りょ':'ryo','ぎゃ':'gya','ぎゅ':'gyu','ぎょ':'gyo','じゃ':'ja','じゅ':'ju','じょ':'jo','びゃ':'bya','びゅ':'byu','びょ':'byo','ぴゃ':'pya','ぴゅ':'pyu','ぴょ':'pyo'};
 function toRomaji(str){let out='';for(let i=0;i<str.length;i++){let ch=str[i];if(ch==='っ'){let next=combo[str.slice(i+1,i+3)]||kanaMap[str[i+1]]||'';out+=next[0]||'';continue;}let two=str.slice(i,i+2);if(combo[two]){out+=combo[two];i++;continue;}if(ch==='ー'){let m=out.match(/[aeiou](?!.*[aeiou])/);out+=m?m[0]:'';continue;}out+=kanaMap[ch]||ch.toLowerCase();}return out;}
 function romajiOptions(name){const base=toRomaji(name).toLowerCase();const set=new Set([base]);const repl=(a,b)=>{Array.from(set).forEach(v=>{if(v.includes(a))set.add(v.split(a).join(b))})};for(let i=0;i<3;i++){[['shi','si'],['chi','ti'],['tsu','tu'],['fu','hu'],['ji','zi'],['ja','zya'],['ju','zyu'],['jo','zyo'],['sha','sya'],['shu','syu'],['sho','syo'],['cha','tya'],['chu','tyu'],['cho','tyo'],['cha','cya'],['chu','cyu'],['cho','cyo']].forEach(([a,b])=>{repl(a,b);repl(b,a);});}Array.from(set).forEach(v=>{const chars=[...v];for(let i=0;i<chars.length;i++){if(chars[i]==='n'&&chars[i+1]!=='n'){let arr=[...chars];arr.splice(i+1,0,'n');set.add(arr.join(''));}}});Array.from(set).forEach(v=>{if(v.includes('ou')){set.add(v.replaceAll('ou','o'));set.add(v.replaceAll('ou','oo'));}});return Array.from(set);}
+
+const SECRET_ANSWER='gokiburi';
+const SECRET_HINTS=[
+  '・とても身近な生き物だよ。',
+  '・茶色だよ。',
+  '・あまりいいイメージはないけど、<br>　れっきとした昆虫の仲間だよ。'
+];
+let secretMiss=0;
+let secretAttempt=0;
+function allNonSecretCollected(){
+  const targets=ANIMALS.filter(a=>a.level!=='SECRET');
+  return targets.every(a=>isFound(a.id));
+}
+function devUnlockSecret(){
+  if(!state.cleared)state.cleared={};
+  state.cleared.easy=true;state.cleared.middle=true;state.cleared.hard=true;state.cleared.special=true;
+  ANIMALS.filter(a=>a.level!=='SECRET').forEach(a=>{
+    if(a.level==='初級')state.found[a.id]={easy:true,middle:true,hard:true};
+    else if(a.level==='特級')state.found[a.id]={special:true};
+  });
+  save();renderAll();showTab('home');alert('SECRETを解放しました');
+}
+function devCompleteSecret(){
+  devUnlockSecret();
+  const s=ANIMALS.find(a=>a.level==='SECRET');
+  if(s){state.found[s.id]={secret:true};state.cleared.secret=true;}
+  save();renderAll();showTab('book');alert('SECRET取得状態にしました');
+}
+function devSecret(stage){
+  devUnlockSecret();
+  secretAttempt=stage;
+  startGame({id:'secret',name:'SECRET',badge:'G',showRoma:false,desc:'SECRETデバッグ'});
+}
+function secretHintCount(){
+  if(secretAttempt<=0)return 0;
+  if(secretAttempt===1)return 1;
+  if(secretAttempt===2)return 2;
+  return 3;
+}
+function secretRomaCount(){
+  if(secretAttempt<4)return 0;
+  return Math.min(SECRET_ANSWER.length, secretAttempt-3);
+}
+function renderSecretQuestion(){
+  current=ANIMALS.find(a=>a.level==='SECRET') || current;
+  document.getElementById('qImage').src=IMG('unknown');
+  document.getElementById('qName').textContent='？？？？';
+  const roma=SECRET_ANSWER.slice(0,secretRomaCount());
+  document.getElementById('romaji').innerHTML=roma?`<div class="secretRomaHint">${roma}</div>`:'';
+  const hints=SECRET_HINTS.slice(0,secretHintCount()).join('<br>');
+  document.getElementById('result').innerHTML=hints?`<div class="secretHintBox">${hints}</div>`:'';
+  document.getElementById('answer').value='';
+}
+function secretGameOver(){
+  document.getElementById('result').innerHTML='<div class="secretGameOver">見つけられなかったようだね。<br>もう一回チャレンジしてみよう！</div>';
+  secretAttempt++;
+  save();
+  setTimeout(()=>{currentLevel=null;renderAll();showTab('home');},2600);
+}
+function secretComplete(){
+  const s=ANIMALS.find(a=>a.level==='SECRET');
+  if(s){state.found[s.id]={secret:true};state.cleared.secret=true;}
+  save();
+  document.getElementById('qImage').src=IMG(s?s.id:'gokiburi');
+  document.getElementById('qName').textContent='ゴキブリ';
+  document.getElementById('romaji').innerHTML='';
+  document.getElementById('result').innerHTML='<div class="secretComplete">🎉 SECRET COMPLETE!!<br>ゴキブリ 発見！<br>全55種類コンプリート！！</div>';
+  setTimeout(()=>{currentLevel=null;renderAll();showTab('book');},3000);
+}
+
 loadAnimals();
 document.addEventListener('DOMContentLoaded',()=>{
   const b=document.querySelector('.startBtn');
