@@ -1,6 +1,6 @@
-# 生き物ハンタータイピング Ver1.7 JSON内蔵 読み込み修正版
+# 生き物ハンタータイピング Ver1.7 JSON内蔵 初期状態修正版
 
 ## 修正
-- animals.jsonはindex.htmlに内蔵済み
-- 読み込み中で止まる原因だった不足関数を追加
-- GitHub Pages / Cloudflare Pages向け安定版
+- 以前のデバッグ用保存データを読まないようにSAVE_KEYを変更
+- 初期状態は0/55から開始
+- SECRETは条件達成まで非表示
