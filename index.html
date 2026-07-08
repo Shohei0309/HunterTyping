@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>生き物ハンタータイピング Ver1.7 ルビ対応修正版安定版</title>
+<title>生き物ハンタータイピング Ver1.7 正式版</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}html,body{margin:0;min-height:100%;font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;background:#e9fbff;color:#213}button,input{font:inherit}.screen{display:none;min-height:100dvh}.active{display:block}#cover{place-items:center;padding:10px;background:linear-gradient(180deg,#8ee7ff,#eafff2)}#cover.active{display:grid}.coverCard{position:relative;width:min(100vw,calc((100dvh - 20px)*4/3));aspect-ratio:4/3;max-height:calc(100dvh - 20px);border-radius:28px;overflow:hidden;box-shadow:0 20px 50px #0003;background:#dff7ff}.coverCard img{width:100%;height:100%;object-fit:contain}.startBtn{position:absolute;left:50%;bottom:4%;transform:translateX(-50%);font-size:clamp(22px,4vw,38px);font-weight:900;padding:.55em 1.4em;border:0;border-radius:999px;background:linear-gradient(#ffec67,#ff9f1c);color:#5a2d00;box-shadow:0 8px 0 #b86400,0 12px 25px #0004}.app{min-height:100dvh;background:linear-gradient(180deg,#d7f7ff,#f6fff2);padding:12px}.top{display:flex;gap:10px;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto 10px}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tab{padding:12px 18px;border:3px solid #22577a;border-radius:18px;background:#fff;font-weight:900;color:#22577a}.tab.on{background:#22577a;color:white}.rankbox{font-weight:900;background:#fff;padding:10px 14px;border-radius:18px;border:3px solid #57cc99}.panel{max-width:1100px;margin:auto;background:#ffffffdd;border:4px solid #90e0ef;border-radius:28px;padding:18px;box-shadow:0 8px 25px #0001}h1,h2{margin:.2em 0 .5em}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}.levelCard{position:relative;border-radius:28px;padding:20px;min-height:270px;background:linear-gradient(180deg,#fff,#f7fbff);border:4px solid #ddd;box-shadow:0 10px 22px #0002;text-align:center}.levelCard h2{font-size:28px}.badge{font-size:56px}.locked{filter:grayscale(1);opacity:.62}.challenge{margin-top:14px;padding:12px 20px;border:0;border-radius:999px;background:#06d6a0;color:#063;font-weight:900;box-shadow:0 5px 0 #04966f}.challenge:disabled{background:#ccc;color:#666;box-shadow:none}.gameHead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.qbox{text-align:center;padding:22px;background:#fff;border-radius:28px;border:4px solid #ffd166;margin:15px 0}.qImage{width:min(330px,78vw);height:210px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.qname{font-size:clamp(34px,7vw,68px);font-weight:900}.romaji{font-size:clamp(22px,4vw,36px);color:#118ab2;font-weight:900;letter-spacing:2px}#answer{width:min(92vw,650px);font-size:32px;padding:14px 18px;border:4px solid #22577a;border-radius:20px;text-align:center}.result{font-size:28px;font-weight:900;min-height:40px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}.bioCard{background:linear-gradient(180deg,#fff,#f3fff8);border:3px solid #57cc99;border-radius:20px;padding:10px;text-align:center;min-height:245px;box-shadow:0 6px 14px #0001;position:relative;cursor:pointer}.bioCard.specialFound{border-color:#b983ff;background:linear-gradient(180deg,#fff,#f9f2ff)}.bioCard.secretFound{border-color:#222;background:linear-gradient(135deg,#fff,#fdf6ff,#efffff)}.bioCard.locked2{background:#eee;border-color:#ccc;color:#999}.cardImgBox{height:130px;display:grid;place-items:center;margin:4px 0}.cardImg{max-width:100%;max-height:126px;object-fit:contain;filter:drop-shadow(0 5px 6px #0002)}.skull{position:absolute;left:12px;top:10px;font-size:30px}.medal{position:absolute;right:12px;top:10px;font-size:30px}.filterBar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.filterBar button{border:2px solid #22577a;background:white;border-radius:999px;padding:8px 12px;font-weight:900}.filterBar .on{background:#22577a;color:white}.modal{position:fixed;inset:0;background:#0007;display:none;place-items:center;padding:20px;z-index:5}.modal.show{display:grid}.modalCard{background:#fff;border-radius:28px;padding:22px;max-width:560px;width:100%;border:5px solid #ffd166;text-align:center;max-height:90dvh;overflow:auto}.modalImg{width:min(340px,80vw);height:220px;object-fit:contain;filter:drop-shadow(0 8px 10px #0002)}.close{float:right;border:0;background:#ef476f;color:white;border-radius:999px;padding:8px 12px;font-weight:900}.small{font-size:14px;color:#567}.danger{color:#d90429;font-weight:900}.progress{height:16px;background:#d7f7ff;border-radius:999px;overflow:hidden;border:2px solid #90e0ef}.progress>div{height:100%;width:0;background:#57cc99}
 @keyframes specialGlow{0%{box-shadow:0 0 8px #b967ff55,0 0 0 3px #b967ff;border-color:#a855f7}50%{box-shadow:0 0 22px #f0abfcaa,0 0 0 3px #f0abfc;border-color:#e879f9}100%{box-shadow:0 0 8px #b967ff55,0 0 0 3px #b967ff;border-color:#a855f7}}
@@ -14,73 +14,16 @@
 .bioCard.secretCard h2,.bioCard.secretCard .medal,.bioCard.secretCard .small{color:#7c5200;text-shadow:0 0 6px #facc1588}
 
 
-/* Ver1.7 ルビ対応修正版 modal effects */
-.modalCard.specialModal{
-  border-color:#a855f7;
-  background:
-    radial-gradient(circle at 18% 22%,#ffffff 0 2px,transparent 3px),
-    radial-gradient(circle at 80% 35%,#ffffff 0 2px,transparent 3px),
-    linear-gradient(180deg,#ffffff,#fbf5ff);
-  background-size:90px 90px,130px 130px,100% 100%;
-  animation:specialGlow 2.6s ease-in-out infinite,sparkleMove 7s linear infinite;
-}
-.modalCard.secretModal{
-  border-color:#facc15;
-  background:
-    radial-gradient(circle at 18% 22%,#fff9 0 2px,transparent 3px),
-    radial-gradient(circle at 80% 38%,#fff 0 2px,transparent 3px),
-    linear-gradient(180deg,#fff8db,#ffffff,#fff3b0);
-  background-size:90px 90px,130px 130px,100% 100%;
-  animation:secretGlow 2.1s ease-in-out infinite,sparkleMove 6s linear infinite;
-}
-.modalCard.secretModal h1,
-.modalCard.secretModal p{
-  color:#7c5200;
-  text-shadow:0 0 6px #facc1588;
-}
-.modalCard.specialModal h1{
-  text-shadow:0 0 8px #d8b4feaa;
-}
-
-
-/* Ver1.7 ルビ対応修正版 SECRET dev tools */
-.devPanel{
-  position:fixed;right:14px;bottom:14px;z-index:20;background:#ffffffee;border:3px solid #22577a;border-radius:18px;
-  box-shadow:0 8px 25px #0003;padding:10px;max-width:320px;font-size:14px
-}
-.devPanel h3{margin:0 0 8px;font-size:16px}
-.devPanel button{margin:3px;padding:6px 9px;border:2px solid #22577a;border-radius:999px;background:white;font-weight:900}
-.devPanel button:hover{background:#e9fbff}
-.secretHintBox{margin-top:12px;font-size:22px;font-weight:900;line-height:1.6;color:#213;text-align:left;display:inline-block}
-.secretRomaHint{font-size:32px;color:#118ab2;font-weight:900;letter-spacing:5px;margin-top:8px}
-.secretGameOver{font-size:34px;font-weight:900;color:#ef476f;margin-top:18px;line-height:1.5}
-.secretComplete{font-size:38px;font-weight:900;color:#b8860b;text-shadow:0 0 10px #facc15;margin-top:15px}
-
-ruby rt{font-size:.55em;color:#567;font-weight:700}.modalCard ruby rt{font-size:.52em}
-@media(max-width:800px){.top{align-items:stretch;flex-direction:column}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab{padding:10px 8px}}
-</style>
+/* Ver1.7 正式版</style>
 </head>
 <body>
 <section id="cover" class="screen active"><div class="coverCard"><img src="assets/images/cover.png" onerror="this.style.display='none'" alt="生き物ハンター表紙"><button class="startBtn" onclick="showApp()">スタート</button></div></section>
 <main id="app" class="screen app">
-  <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング<ruby>練習<rt>れんしゅう</rt></ruby></button><button class="tab" id="tabBook" onclick="showTab('book')"><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</button><button class="tab" onclick="resetData()"><ruby>記録<rt>きろく</rt></ruby>リセット</button></div><div class="rankbox" id="rankBox">読み込み中...</div></div>
-  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.7 ルビ対応修正版安定版</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
+  <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング練習</button><button class="tab" id="tabBook" onclick="showTab('book')">集めた生き物リスト</button><button class="tab" onclick="resetData()">記録リセット</button></div><div class="rankbox" id="rankBox">読み込み中...</div></div>
+  <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.7 正式版</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox">残り <span id="timeLeft">60</span> 秒　得点 <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
-  <section id="book" class="panel" style="display:none"><h1><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
+  <section id="book" class="panel" style="display:none"><h1>集めた生き物リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
 </main>
-
-<div class="devPanel" id="devPanel">
-  <h3>🔧 SECRETデバッグ</h3>
-  <button onclick="devSecret(0)">ヒント0</button>
-  <button onclick="devSecret(1)">ヒント1</button>
-  <button onclick="devSecret(2)">ヒント2</button>
-  <button onclick="devSecret(3)">ヒント3</button>
-  <button onclick="devSecret(4)">ローマ字g</button>
-  <button onclick="devSecret(5)">ローマ字go</button>
-  <button onclick="devSecret(8)">ローマ字gokib</button>
-  <button onclick="devUnlockSecret()">SECRET解放</button>
-  <button onclick="devCompleteSecret()">SECRET取得</button>
-</div>
 
 <div class="modal" id="modal"><div class="modalCard"><button class="close" onclick="closeModal()">とじる</button><div id="modalContent"></div></div></div>
 <script>
@@ -89,23 +32,14 @@ function rubyText(text){
   if(text===undefined || text===null) return '';
   let s=String(text);
   const map=[
-    ['伝説','でんせつ'],['生き物','いきもの'],['博士','はかせ'],['見習い','みならい'],
-    ['発見','はっけん'],['集めた','あつめた'],['記録','きろく'],['練習','れんしゅう'],
+    ['伝説','でんせつ'],['生き物','いきもの'],['博士','はかせ'],['見習い','みならい'],['発見','はっけん'],['集めた','あつめた'],['記録','きろく'],['練習','れんしゅう'],
     ['初級','しょきゅう'],['中級','ちゅうきゅう'],['上級','じょうきゅう'],['特級','とっきゅう'],['研究員','けんきゅういん'],
-    ['取得','しゅとく'],['分類','ぶんるい'],['環境','かんきょう'],['昆虫','こんちゅう'],['魚類','ぎょるい'],
-    ['両生類','りょうせいるい'],['爬虫類','はちゅうるい'],['甲殻類','こうかくるい'],['貝','かい'],['その他','そのた'],
-    ['小さな','ちいさな'],['虫','むし'],['甘い','あまい'],['植物','しょくぶつ'],['種','たね'],
-    ['校庭','こうてい'],['草むら','くさむら'],['土','つち'],['中','なか'],['草','くさ'],['葉','は'],['木','き'],
-    ['花','はな'],['近く','ちかく'],['水面','すいめん'],['落ちた','おちた'],['池','いけ'],['川','かわ'],
-    ['水中','すいちゅう'],['藻','も'],['田んぼ','たんぼ'],['小魚','こざかな'],['水生','すいせい'],
-    ['底','そこ'],['方','ほう'],['泥','どろ'],['用水路','ようすいろ'],['石','いし'],['日なた','ひなた'],
-    ['家','いえ'],['壁','かべ'],['夜','よる'],['明かり','あかり'],['水草','みずくさ'],['落ち葉','おちば'],
-    ['有機物','ゆうきぶつ'],['水辺','みずべ'],['海辺','うみべ'],['沢','さわ'],['樹液','じゅえき'],
-    ['雑木林','ぞうきばやし'],['林','はやし'],['森林','しんりん'],['小動物','しょうどうぶつ'],
-    ['花だん','かだん'],['建物','たてもの'],['周辺','しゅうへん'],['身近','みぢか'],['茶色','ちゃいろ'],
-    ['仲間','なかま'],['挑戦','ちょうせん'],['解放','かいほう'],['条件','じょうけん'],['通常','つうじょう'],
-    ['図鑑','ずかん'],['表示','ひょうじ'],['種類','しゅるい'],['完全','かんぜん'],['制覇','せいは'],
-    ['難易度','なんいど'],['入力欄','にゅうりょくらん'],['空','から'],['答','こた'],['確定','かくてい'],['分間','ふんかん']
+    ['取得','しゅとく'],['分類','ぶんるい'],['環境','かんきょう'],['昆虫','こんちゅう'],['魚類','ぎょるい'],['両生類','りょうせいるい'],['爬虫類','はちゅうるい'],['甲殻類','こうかくるい'],
+    ['小さな','ちいさな'],['植物','しょくぶつ'],['校庭','こうてい'],['草むら','くさむら'],['水面','すいめん'],['水中','すいちゅう'],['田んぼ','たんぼ'],['小魚','こざかな'],
+    ['用水路','ようすいろ'],['日なた','ひなた'],['明かり','あかり'],['水草','みずくさ'],['落ち葉','おちば'],['有機物','ゆうきぶつ'],['水辺','みずべ'],['海辺','うみべ'],
+    ['樹液','じゅえき'],['雑木林','ぞうきばやし'],['森林','しんりん'],['小動物','しょうどうぶつ'],['花だん','かだん'],['建物','たてもの'],['周辺','しゅうへん'],['身近','みぢか'],
+    ['茶色','ちゃいろ'],['仲間','なかま'],['挑戦','ちょうせん'],['解放','かいほう'],['条件','じょうけん'],['通常','つうじょう'],['図鑑','ずかん'],['種類','しゅるい'],
+    ['完全','かんぜん'],['制覇','せいは'],['難易度','なんいど'],['入力欄','にゅうりょくらん'],['確定','かくてい'],['分間','ふんかん'],['貝','かい'],['虫','むし'],['土','つち'],['中','なか'],['草','くさ'],['葉','は'],['木','き'],['花','はな'],['川','かわ'],['池','いけ'],['藻','も'],['泥','どろ'],['石','いし'],['沢','さわ'],['林','はやし'],['家','いえ'],['壁','かべ'],['夜','よる'],['種','たね'],['答','こた'],['空','から'],['方','ほう']
   ];
   map.sort((a,b)=>b[0].length-a[0].length);
   for(const [kan,yomi] of map){s=s.split(kan).join(`<ruby>${kan}<rt>${yomi}</rt></ruby>`);}
@@ -215,26 +149,9 @@ function allNonSecretCollected(){
   const targets=ANIMALS.filter(a=>a.level!=='SECRET');
   return targets.every(a=>isFound(a.id));
 }
-function devUnlockSecret(){
-  if(!state.cleared)state.cleared={};
-  state.cleared.easy=true;state.cleared.middle=true;state.cleared.hard=true;state.cleared.special=true;
-  ANIMALS.filter(a=>a.level!=='SECRET').forEach(a=>{
-    if(a.level==='初級')state.found[a.id]={easy:true,middle:true,hard:true};
-    else if(a.level==='特級')state.found[a.id]={special:true};
-  });
-  save();renderAll();showTab('home');alert('SECRETを解放しました');
-}
-function devCompleteSecret(){
-  devUnlockSecret();
-  const s=ANIMALS.find(a=>a.level==='SECRET');
-  if(s){state.found[s.id]={secret:true};state.cleared.secret=true;}
-  save();renderAll();showTab('book');alert('SECRET取得状態にしました');
-}
-function devSecret(stage){
-  devUnlockSecret();
-  secretAttempt=stage;
-  startGame({id:'secret',name:'SECRET',badge:'G',showRoma:false,desc:'SECRETデバッグ'});
-}
+
+
+
 function secretHintCount(){
   if(secretAttempt<=0)return 0;
   if(secretAttempt===1)return 1;
@@ -274,7 +191,7 @@ function secretComplete(){
   if(s){state.found[s.id]={secret:true};state.cleared.secret=true;}
   save();
   document.getElementById('qImage').src=IMG(s?s.id:'gokiburi');
-  document.getElementById('qName').textContent='ゴキブリ';
+  document.getElementById('qName').innerHTML=rubyText('ゴキブリ');
   document.getElementById('romaji').innerHTML='';
   document.getElementById('result').innerHTML='<div class="secretComplete">🎉 SECRET COMPLETE!!<br>ゴキブリ 発見！<br>全55種類コンプリート！！</div>';
   setTimeout(()=>{currentLevel=null;renderAll();showTab('book');},3000);
