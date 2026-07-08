@@ -19,7 +19,7 @@
 <body>
 <section id="cover" class="screen active"><div class="coverCard"><img src="assets/images/cover.png" onerror="this.style.display='none'" alt="生き物ハンター表紙"><button class="startBtn" onclick="showApp()">スタート</button></div></section>
 <main id="app" class="screen app">
-  <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング練習</button><button class="tab" id="tabBook" onclick="showTab('book')">集めた生き物リスト</button><button class="tab" onclick="resetData()">記録リセット</button></div><div class="rankbox" id="rankBox">読み込み中...</div></div>
+  <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング練習</button><button class="tab" id="tabBook" onclick="showTab('book')">集めた生き物リスト</button><button class="tab" onclick="resetData()">記録リセット</button></div><div class="rankbox" id="rankBox">生き物博士への道</div></div>
   <section id="home" class="panel"><h1>生き物ハンタータイピング Ver1.7 正式安定版</h1><p>1ゲームは1分間。Enterで答えを確定しよう。まちがえたら入力欄が空になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox">残り <span id="timeLeft">60</span> 秒　得点 <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
   <section id="book" class="panel" style="display:none"><h1>集めた生き物リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
@@ -72,6 +72,38 @@ function updateRank(){
   else if(n>=8) title='中級ハンター';
   document.getElementById('rankBox').textContent=`${title}　発見 ${n}/${total}`;
 }
+
+const EASY_IDS=['ari','kumo','kani','ebi','medaka','kaeru','dojou','ga','semi','hachi','namekuji','mimizu','dangomushi','kawanina','amenbo'];
+function animalsForLevel(level){
+  if(level.id==='easy') return ANIMALS.filter(a=>EASY_IDS.includes(a.id));
+  if(level.id==='middle' || level.id==='hard') return ANIMALS.filter(a=>a.level==='初級');
+  if(level.id==='special') return ANIMALS.filter(a=>a.level==='特級');
+  if(level.id==='secret') return ANIMALS.filter(a=>a.level==='SECRET');
+  return ANIMALS.filter(a=>a.level==='初級');
+}
+function isLevelVisible(level){
+  if(level.id==='special') return !!(state.cleared&&state.cleared.hard);
+  if(level.id==='secret') return allNonSecretCollected();
+  return true;
+}
+function isLevelLocked(level){
+  if(level.need) return !(state.cleared&&state.cleared[level.need]);
+  if(level.needAll) return !level.needAll.every(k=>state.cleared&&state.cleared[k]);
+  return false;
+}
+function remainingForLevel(level){
+  const list=animalsForLevel(level);
+  const remain=list.filter(a=>!foundInfo(a.id)[level.id]).length;
+  return {remaining:remain,total:list.length};
+}
+function levelUnlockText(level){
+  if(level.id==='middle') return '解放条件：初級研究員をクリア';
+  if(level.id==='hard') return '解放条件：中級研究員をクリア';
+  if(level.id==='special') return '解放条件：上級研究員をクリア';
+  if(level.id==='secret') return '解放条件：初級・中級・上級・特級の全生き物をゲット';
+  return '';
+}
+
 function renderLevels(){
   const box=document.getElementById('levelCards');
   box.innerHTML='';
