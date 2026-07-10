@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>生き物ハンタータイピング Ver.2.0</title>
+<title>生き物ハンタータイピング Ver.2.0.1</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%;font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;background:#e9fbff;color:#213}
@@ -68,15 +68,40 @@ ruby rt{font-size:.55em;color:#567;font-weight:700}
 .bioCard.specialCard,.modalCard.specialModal{border-color:#a855f7;background:radial-gradient(circle at 20% 20%,#ffffff 0 2px,transparent 3px),radial-gradient(circle at 75% 35%,#ffffff 0 1.8px,transparent 3px),linear-gradient(180deg,#fff,#fbf5ff);background-size:80px 80px,110px 110px,100% 100%;animation:specialGlow 2.6s ease-in-out infinite,sparkleMove 7s linear infinite}
 .bioCard.secretCard,.modalCard.secretModal{border-color:#111;background:radial-gradient(circle at 20% 25%,#fff7 0 2px,transparent 3px),radial-gradient(circle at 80% 40%,#fff9 0 2px,transparent 3px),linear-gradient(180deg,#fff8db,#fff,#fff3b0);background-size:80px 80px,120px 120px,100% 100%;animation:secretGlow 2.1s ease-in-out infinite,sparkleMove 6s linear infinite}
 .bioCard.secretCard h2,.bioCard.secretCard .medal,.bioCard.secretCard .small,.modalCard.secretModal h1,.modalCard.secretModal p{color:#7c5200;text-shadow:0 0 6px #facc1588}
+
+@keyframes startGuidePulse{
+  0%,100%{opacity:.45;transform:translateX(-50%) scale(1)}
+  50%{opacity:1;transform:translateX(-50%) scale(1.03)}
+}
+.startGuide{
+  position:absolute;
+  left:50%;
+  bottom:2.2%;
+  transform:translateX(-50%);
+  width:max-content;
+  max-width:90%;
+  padding:.35em .8em;
+  border-radius:999px;
+  background:#0008;
+  color:#fff;
+  font-size:clamp(16px,2.2vw,28px);
+  font-weight:900;
+  letter-spacing:.03em;
+  text-align:center;
+  text-shadow:-2px -2px 0 #000,2px -2px 0 #000,-2px 2px 0 #000,2px 2px 0 #000;
+  pointer-events:none;
+  animation:startGuidePulse 2s ease-in-out infinite;
+}
+
 @media(max-width:900px){.cards{grid-template-columns:1fr 1fr}.top{align-items:stretch;flex-direction:column}}
 @media(max-width:520px){.cards{grid-template-columns:1fr}.tabs{display:grid;grid-template-columns:1fr 1fr}.tab{padding:10px 8px}}
 </style>
 </head>
 <body>
-<section id="cover" class="screen active"><div class="coverCard"><img src="assets/images/cover.png" alt="生き物ハンター表紙"><button class="startHotspot" onclick="showApp()" aria-label="スタート"></button></div></section>
+<section id="cover" class="screen active"><div class="coverCard" onclick="showApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){showApp()}"><img src="assets/images/cover.png" alt="生き物ハンター表紙"><div class="startGuide">画面をクリック（タップ）するとスタートします</div></div></section>
 <main id="app" class="screen app">
   <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング<ruby>練習<rt>れんしゅう</rt></ruby></button><button class="tab" id="tabBook" onclick="showTab('book')"><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</button><button class="tab" onclick="resetData()"><ruby>記録<rt>きろく</rt></ruby>リセット</button></div><div class="rankbox" id="rankBox"><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby><ruby>博士<rt>はかせ</rt></ruby>への<ruby>道<rt>みち</rt></ruby></div></div>
-  <section id="home" class="panel"><h1><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>ハンタータイピング Ver.2.0</h1><p>1ゲームは1<ruby>分間<rt>ぷんかん</rt></ruby>。Enterで<ruby>答<rt>こた</rt></ruby>えを<ruby>確定<rt>かくてい</rt></ruby>しよう。まちがえたら<ruby>入力欄<rt>にゅうりょくらん</rt></ruby>が<ruby>空<rt>から</rt></ruby>になるよ。</p><div class="cards" id="levelCards"></div></section>
+  <section id="home" class="panel"><h1><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>ハンタータイピング Ver.2.0.1</h1><p>1ゲームは1<ruby>分間<rt>ぷんかん</rt></ruby>。Enterで<ruby>答<rt>こた</rt></ruby>えを<ruby>確定<rt>かくてい</rt></ruby>しよう。まちがえたら<ruby>入力欄<rt>にゅうりょくらん</rt></ruby>が<ruby>空<rt>から</rt></ruby>になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox" id="gameStatus"><ruby>残<rt>のこ</rt></ruby>り <span id="timeLeft">60</span> <ruby>秒<rt>びょう</rt></ruby>　<ruby>得点<rt>とくてん</rt></ruby> <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
   <section id="book" class="panel" style="display:none"><h1><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
 </main>
