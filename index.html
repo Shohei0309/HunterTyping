@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-<title>生き物ハンタータイピング Ver.2.0.1</title>
+<title>生き物ハンタータイピング Ver.2.0.2</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%;font-family:"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;background:#e9fbff;color:#213}
@@ -101,7 +101,7 @@ ruby rt{font-size:.55em;color:#567;font-weight:700}
 <section id="cover" class="screen active"><div class="coverCard" onclick="showApp()" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){showApp()}"><img src="assets/images/cover.png" alt="生き物ハンター表紙"><div class="startGuide">画面をクリック（タップ）するとスタートします</div></div></section>
 <main id="app" class="screen app">
   <div class="top"><div class="tabs"><button class="tab on" id="tabHome" onclick="showTab('home')">タイピング<ruby>練習<rt>れんしゅう</rt></ruby></button><button class="tab" id="tabBook" onclick="showTab('book')"><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</button><button class="tab" onclick="resetData()"><ruby>記録<rt>きろく</rt></ruby>リセット</button></div><div class="rankbox" id="rankBox"><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby><ruby>博士<rt>はかせ</rt></ruby>への<ruby>道<rt>みち</rt></ruby></div></div>
-  <section id="home" class="panel"><h1><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>ハンタータイピング Ver.2.0.1</h1><p>1ゲームは1<ruby>分間<rt>ぷんかん</rt></ruby>。Enterで<ruby>答<rt>こた</rt></ruby>えを<ruby>確定<rt>かくてい</rt></ruby>しよう。まちがえたら<ruby>入力欄<rt>にゅうりょくらん</rt></ruby>が<ruby>空<rt>から</rt></ruby>になるよ。</p><div class="cards" id="levelCards"></div></section>
+  <section id="home" class="panel"><h1><ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>ハンタータイピング Ver.2.0.2</h1><p>1ゲームは1<ruby>分間<rt>ぷんかん</rt></ruby>。Enterで<ruby>答<rt>こた</rt></ruby>えを<ruby>確定<rt>かくてい</rt></ruby>しよう。まちがえたら<ruby>入力欄<rt>にゅうりょくらん</rt></ruby>が<ruby>空<rt>から</rt></ruby>になるよ。</p><div class="cards" id="levelCards"></div></section>
   <section id="game" class="panel" style="display:none"><div class="gameHead"><button class="tab" onclick="endGame()">← やめる</button><h2 id="gameTitle">初級研究員</h2><div class="rankbox" id="gameStatus"><ruby>残<rt>のこ</rt></ruby>り <span id="timeLeft">60</span> <ruby>秒<rt>びょう</rt></ruby>　<ruby>得点<rt>とくてん</rt></ruby> <span id="score">0</span></div></div><div class="qbox"><img id="qImage" class="qImage" alt="問題画像"><div class="qname" id="qName"></div><div class="romaji" id="romaji"></div><input id="answer" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="latin" placeholder="ローマ字で入力して Enter"><div class="result" id="result"></div></div></section>
   <section id="book" class="panel" style="display:none"><h1><ruby>集<rt>あつ</rt></ruby>めた<ruby>生<rt>い</rt></ruby>き<ruby>物<rt>もの</rt></ruby>リスト</h1><div class="progress"><div id="progressBar"></div></div><p id="progressText" class="small"></p><div class="filterBar" id="filters"></div><div class="grid" id="bookGrid"></div></section>
 </main>
@@ -127,13 +127,37 @@ const LEVELS=[
 let state=loadState(), currentLevel=null, pool=[], current=null, timer=null, time=60, score=0, filter='すべて', secretMiss=0;
 function rubyText(text){
   if(text===undefined||text===null)return '';
-  let s=String(text);
-  const map=[
-    ['伝説','でんせつ'],['生き物','いきもの'],['博士','はかせ'],['見習い','みならい'],['発見','はっけん'],['集めた','あつめた'],['記録','きろく'],['練習','れんしゅう'],['初級','しょきゅう'],['中級','ちゅうきゅう'],['上級','じょうきゅう'],['特級','とっきゅう'],['研究員','けんきゅういん'],['取得','しゅとく'],['分類','ぶんるい'],['環境','かんきょう'],['昆虫','こんちゅう'],['魚類','ぎょるい'],['両生類','りょうせいるい'],['爬虫類','はちゅうるい'],['甲殻類','こうかくるい'],['小さな','ちいさな'],['植物','しょくぶつ'],['校庭','こうてい'],['草むら','くさむら'],['水面','すいめん'],['水中','すいちゅう'],['田んぼ','たんぼ'],['小魚','こざかな'],['用水路','ようすいろ'],['日なた','ひなた'],['明かり','あかり'],['水草','みずくさ'],['落ち葉','おちば'],['有機物','ゆうきぶつ'],['水辺','みずべ'],['海辺','うみべ'],['樹液','じゅえき'],['雑木林','ぞうきばやし'],['森林','しんりん'],['小動物','しょうどうぶつ'],['花だん','かだん'],['建物','たてもの'],['周辺','しゅうへん'],['身近','みぢか'],['茶色','ちゃいろ'],['仲間','なかま'],['挑戦','ちょうせん'],['解放','かいほう'],['条件','じょうけん'],['通常','つうじょう'],['図鑑','ずかん'],['種類','しゅるい'],['全','ぜん'],['完全','かんぜん'],['制覇','せいは'],['難易度','なんいど'],['入力欄','にゅうりょくらん'],['確定','かくてい'],['分間','ぷんかん'],['得点','とくてん'],['残り','のこり'],['秒','びょう'],['貝','かい'],['毒','どく'],['針','はり'],['注意','ちゅうい'],['虫','むし'],['土','つち'],['中','なか'],['草','くさ'],['葉','は'],['木','き'],['花','はな'],['川','かわ'],['池','いけ'],['藻','も'],['泥','どろ'],['石','いし'],['沢','さわ'],['林','はやし'],['家','いえ'],['壁','かべ'],['夜','よる'],['種','たね'],['答','こた'],['空','から'],['方','ほう'],['場所','ばしょ'],['正解','せいかい']
+  const s=String(text);
+  const entries=[
+    ['伝説','でんせつ'],['生き物','いきもの'],['博士','はかせ'],['見習い','みならい'],
+    ['発見','はっけん'],['集めた','あつめた'],['記録','きろく'],['練習','れんしゅう'],
+    ['初級','しょきゅう'],['中級','ちゅうきゅう'],['上級','じょうきゅう'],['特級','とっきゅう'],
+    ['研究員','けんきゅういん'],['取得','しゅとく'],['分類','ぶんるい'],['環境','かんきょう'],
+    ['昆虫','こんちゅう'],['魚類','ぎょるい'],['両生類','りょうせいるい'],['爬虫類','はちゅうるい'],
+    ['甲殻類','こうかくるい'],['小さな','ちいさな'],['植物','しょくぶつ'],['校庭','こうてい'],
+    ['草むら','くさむら'],['水面','すいめん'],['水中','すいちゅう'],['田んぼ','たんぼ'],
+    ['小魚','こざかな'],['用水路','ようすいろ'],['日なた','ひなた'],['明かり','あかり'],
+    ['水草','みずくさ'],['落ち葉','おちば'],['有機物','ゆうきぶつ'],['水辺','みずべ'],
+    ['海辺','うみべ'],['樹液','じゅえき'],['雑木林','ぞうきばやし'],['森林','しんりん'],
+    ['小動物','しょうどうぶつ'],['花だん','かだん'],['建物','たてもの'],['周辺','しゅうへん'],
+    ['身近','みぢか'],['茶色','ちゃいろ'],['仲間','なかま'],['挑戦','ちょうせん'],
+    ['解放','かいほう'],['条件','じょうけん'],['通常','つうじょう'],['図鑑','ずかん'],
+    ['種類','しゅるい'],['完全','かんぜん'],['制覇','せいは'],['難易度','なんいど'],
+    ['入力欄','にゅうりょくらん'],['確定','かくてい'],['分間','ぷんかん'],
+    ['得点','とくてん'],['残り','のこり'],['場所','ばしょ'],['正解','せいかい'],
+    ['注意','ちゅうい'],['一回','いっかい'],['全部','ぜんぶ'],['全','ぜん'],
+    ['秒','びょう'],['貝','かい'],['毒','どく'],['針','はり'],['虫','むし'],
+    ['土','つち'],['中','なか'],['草','くさ'],['葉','は'],['木','き'],['花','はな'],
+    ['川','かわ'],['池','いけ'],['藻','も'],['泥','どろ'],['石','いし'],['沢','さわ'],
+    ['林','はやし'],['家','いえ'],['壁','かべ'],['夜','よる'],['種','たね'],
+    ['答','こた'],['空','から'],['方','ほう'],['回','かい'],['点','てん'],['匹','ひき']
   ];
-  map.sort((a,b)=>b[0].length-a[0].length);
-  for(const [kan,yomi] of map){s=s.split(kan).join(`<ruby>${kan}<rt>${yomi}</rt></ruby>`);}
-  return s;
+  const rubyMap=new Map(entries);
+  const pattern=entries
+    .map(([word])=>word)
+    .sort((a,b)=>b.length-a.length)
+    .join('|');
+  return s.replace(new RegExp(pattern,'g'),word=>`<ruby>${word}<rt>${rubyMap.get(word)}</rt></ruby>`);
 }
 function loadState(){try{return JSON.parse(localStorage.getItem(SAVE_KEY))||{found:{},best:{},cleared:{},secretAttempts:0}}catch(e){return{found:{},best:{},cleared:{},secretAttempts:0}}}
 function save(){localStorage.setItem(SAVE_KEY,JSON.stringify(state))}
